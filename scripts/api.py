@@ -12,15 +12,6 @@ import base64
 from pydantic import BaseModel
 
 
-def get_root_path():
-    path = os.path.dirname(os.path.realpath(__file__))
-    path = os.path.dirname(path)
-    path = os.path.dirname(path)
-    path = os.path.dirname(path)
-
-    return path
-
-
 class GetGeneratedImagesRequest(BaseModel):
     limit: int = 10
 
@@ -28,7 +19,7 @@ class GetGeneratedImagesRequest(BaseModel):
 def StableStudio_api(_: gr.Blocks, app: FastAPI):
     @app.get("/StableStudio/check-extension-installed")
     async def check_extension_installed(extension_name: str):
-        extension_path = os.path.join(get_root_path(), "extensions", extension_name)
+        extension_path = os.path.join(os.getcwd(), "extensions", extension_name)
 
         installed = 0
 
@@ -42,7 +33,7 @@ def StableStudio_api(_: gr.Blocks, app: FastAPI):
 
     @app.post("/StableStudio/get-generated-images")
     async def get_generated_images(request: GetGeneratedImagesRequest):
-        outputs_path = os.path.join(get_root_path(), "outputs")
+        outputs_path = os.path.join(os.getcwd(), "outputs")
 
         txt2img_folder = os.path.join(outputs_path, 'txt2img-images', '**')
         img2img_folder = os.path.join(outputs_path, 'img2img-images', '**')
