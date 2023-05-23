@@ -64,12 +64,17 @@ def StableStudio_api(_: gr.Blocks, app: FastAPI):
 
                 encoded_content = api.encode_pil_to_base64(img)
 
+                image_name = os.path.basename(file)
+
+                seed = int(image_name.split(".")[0].split("-")[1])
+
                 return_value = {
-                    "image_name": os.path.basename(file),
+                    "image_name": image_name,
                     "create_date": os.path.getctime(file),
                     "content": encoded_content,
                     "width": width,
-                    "height": height
+                    "height": height,
+                    "seed": seed
                 }
 
                 return_values.append(return_value)
