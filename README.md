@@ -1,6 +1,9 @@
 # Stable Diffusion WebUI StableStudio Adapter
 A custom extension for [AUTOMATIC1111/stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui) to extend rest APIs to do some local operations, using in StableStudio.
 
+## About StableStudio
+Please go to [StableStudio](https://github.com/Stability-AI/StableStudio) and [StableStudio-plugin-webui](https://github.com/Stability-AI/StableStudio/tree/main/packages/stablestudio-plugin-webui) to check more details.
+
 ## Installation
 Just like you install other extension of webui:
 1. go to Extensions -> Install from URL
